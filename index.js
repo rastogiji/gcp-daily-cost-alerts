@@ -1,7 +1,7 @@
 exports.main = (req,res) => {
     const sendNotifications = async (rows) => {
         const SlackNotify = require("slack-notify");
-        const MY_SLACK_WEBHOOK_URL = "https://hooks.slack.com/services/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";
+        const MY_SLACK_WEBHOOK_URL = <YOU SLACK WEBHOOK URL>;
         const slack = SlackNotify(MY_SLACK_WEBHOOK_URL);
         
           await slack.alert({
