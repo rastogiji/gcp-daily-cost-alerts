@@ -4,9 +4,9 @@ exports.main = (req,res) => {
     // Sending notification to Slack
     const sendNotifications = async (rows) => {
         const SlackNotify = require("slack-notify");
-        const MY_SLACK_WEBHOOK_URL = "https://hooks.slack.com/services/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";
+        const MY_SLACK_WEBHOOK_URL = "<WebHook URL>";
         const slack = SlackNotify(MY_SLACK_WEBHOOK_URL);
-        const billingURL = "https://console.cloud.google.com/billing/012C8F-6ADB54-4D1C1D/reports;chartType=STACKED_BAR;grouping=GROUP_BY_NONE;credits=SPENDING_BASED_DISCOUNT?authuser=5&organizationId=309775343449&supportedpurview=project";
+        const billingURL = "<Billing Account URL>";
         const spike = rows[0].total_cost - rows[1].total_cost;
         
           try{
@@ -53,7 +53,7 @@ exports.main = (req,res) => {
       SUM(cost) as total_cost,
       EXTRACT(DAY FROM usage_start_time) AS day
     FROM
-      \`concise-rune-302709.bq_billing_dataset.gcp_billing_export_resource_v1_012C8F_6ADB54_4D1C1D\`
+      \`DATASET Name\`
     WHERE
       EXTRACT(DAY FROM usage_start_time) = EXTRACT(DAY FROM CURRENT_TIMESTAMP()) OR
       EXTRACT(DAY FROM usage_start_time) = EXTRACT(DAY FROM CURRENT_TIMESTAMP())-1
