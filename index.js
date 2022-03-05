@@ -1,4 +1,4 @@
-const main = () => {
+exports.main = (req,res) => {
 
     const AMOUNT_CHANGED = 50;
     // Sending notification to Slack
@@ -62,5 +62,5 @@ const main = () => {
     ORDER BY
       day DESC`
     createJob(newQuery);
-}
-main();
+    res.send("200");
+};
