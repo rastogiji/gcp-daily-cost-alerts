@@ -6,8 +6,12 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rastogiji/gcp-daily-cost-alerts.git"
+  },
   "author": "Animesh Rastogi",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "@google-cloud/bigquery": "^5.11.0",
     "slack-notify": "^2.0.2"
