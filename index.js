@@ -15,8 +15,8 @@ exports.main = (req,res) => {
               await slack.alert({
                 "text": `*Billing ID URL*: ${billingURL} \n *High Level Details:*`,
                 "fields": {
-                    "Previous Cost": `${rows[1].total_cost}`,
-                    "New Cost": `${rows[0].total_cost}`,
+                    "Previous Cost": `*${rows[1].day.value}*: ₹${rows[1].total_cost}`,
+                    "New Cost": `*${rows[0].day.value}*: ₹${rows[0].total_cost}`,
                     "Spike": `${spike}`
                 }
               });
