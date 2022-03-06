@@ -51,16 +51,16 @@ exports.main = (req,res) => {
     const newQuery =
     `SELECT
       SUM(cost) as total_cost,
-      EXTRACT(DAY FROM usage_start_time) AS day
+      EXTRACT(DATE FROM usage_start_time) AS day
     FROM
-      \`DATASET Name\`
+      \`<Table_Name>\`
     WHERE
-      EXTRACT(DAY FROM usage_start_time) = EXTRACT(DAY FROM CURRENT_TIMESTAMP()) OR
-      EXTRACT(DAY FROM usage_start_time) = EXTRACT(DAY FROM CURRENT_TIMESTAMP())-1
+      EXTRACT(DATE FROM usage_start_time) = EXTRACT(DATE FROM CURRENT_TIMESTAMP()) OR
+      EXTRACT(DATE FROM usage_start_time) = EXTRACT(DATE FROM CURRENT_TIMESTAMP())-1
     GROUP BY 
-      day
+      2
     ORDER BY
-      day DESC`
+      2 DESC`
     createJob(newQuery);
     res.send("200");
 };
