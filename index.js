@@ -45,7 +45,6 @@ exports.main = (req,res) => {
       const job = response[0];
       const [rows] = await job.getQueryResults(job);
       console.log("Query execution complete");
-
       sendNotifications(rows);
   }
   const newQuery =
