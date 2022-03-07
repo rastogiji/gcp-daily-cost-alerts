@@ -2,6 +2,8 @@
 
 Send Slack Notifications when there is a sudden spike in daily costs.
 
+![Alert Image](slack_alert.png?raw=true)
+
 ## Installation
 
 Use the package manager [npm](https://github.com/npm/cli) to install all the packages in package.json file.
