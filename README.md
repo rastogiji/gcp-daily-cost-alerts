@@ -4,10 +4,6 @@ Send Slack Notifications when there is a sudden spike in daily costs.
 
 ![Alert Image](slack_alert.png?raw=true)
 
-## Installation
-
-Use the package manager [npm](https://github.com/npm/cli) to install all the packages in package.json file.
-
 ```bash
 npm install
 ```
@@ -22,8 +18,9 @@ npm install
 
 The Deployment is a 2 step process:
 
-- Cloud Functions to host your code
-- Cloud Scheduler as an Enterprise Grade Cron Scheduler. 
+- CI/CD tool to build your container using Secrets from Secret Manager and Deploy it to Cloud Run
+- Cloud Scheduler to trigger the service
 
 ## License
+
 [MIT](https://github.com/rastogiji/gcp-daily-cost-alerts/blob/master/LICENSE)
