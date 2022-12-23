@@ -4,7 +4,7 @@
   "description": "This repo creates a Cloud Function which sned Slack alert when it detects a configured spike in daily costs in GCP.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
@@ -14,6 +14,8 @@
   "license": "MIT",
   "dependencies": {
     "@google-cloud/bigquery": "^5.11.0",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.2",
     "slack-notify": "^2.0.2"
   }
 }

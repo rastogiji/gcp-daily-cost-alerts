@@ -1,0 +1,7 @@
+node_modules/
+.dockerignore
+Dockerfile
+LICENSE
+package-lock.json
+README.md
+slack_alert.png
