@@ -18,8 +18,16 @@ npm install
 
 The Deployment is a 2 step process:
 
-- CI/CD tool to build your container using Secrets from Secret Manager and Deploy it to Cloud Run
+- CI/CD tool to build your container using Secrets and creating a .env file and Deploying it to Cloud Run
 - Cloud Scheduler to trigger the service
+
+## Secrets Required
+
+- PORT
+- BQ_TABLE_NAME
+- TOTAL_SPIKE
+- SLACK_WEBHOOK_URL
+- BILLING_URL
 
 ## License
 
