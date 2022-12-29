@@ -16,6 +16,8 @@
     "@google-cloud/bigquery": "^5.11.0",
     "dotenv": "^16.0.1",
     "express": "^4.18.2",
+    "googleapis": "^110.0.0",
+    "nodemailer": "^6.8.0",
     "slack-notify": "^2.0.2"
   }
 }
