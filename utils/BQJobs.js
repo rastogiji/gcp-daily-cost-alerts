@@ -23,7 +23,6 @@ const createBQJob = async (query) => {
     }
   } catch (err) {
     console.log(`Error Querying BQ: ${err}`);
-    process.exit(1);
   }
 };
 
