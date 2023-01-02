@@ -26,8 +26,9 @@ The Deployment is a 2 step process:
 - PORT
 - BQ_TABLE_NAME
 - TOTAL_SPIKE
-- SLACK_WEBHOOK_URL
-- BILLING_URL
+- SLACK_WEBHOOK_URL(optional)
+- BILLING_URL(optional. Required when Slack Alert is enabled)
+- NOTIFICATION_CHANNEL(Slack | Email)
 
 ## License
 

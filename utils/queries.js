@@ -4,7 +4,7 @@ const total_cost_query = `SELECT
     SUM(cost) as cost,
     EXTRACT(DATE FROM usage_start_time) AS day
   FROM
-    ${table}
+    \`${table}\`
   WHERE
     EXTRACT(DATE FROM usage_start_time) = EXTRACT(DATE FROM CURRENT_TIMESTAMP()) OR
     EXTRACT(DATE FROM usage_start_time) = EXTRACT(DATE FROM CURRENT_TIMESTAMP())-1
