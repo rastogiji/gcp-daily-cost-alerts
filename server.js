@@ -14,20 +14,20 @@ app.use(express.json());
 app.get("/", async (req, res) => {
   try {
     const rows = await createBQJob(total_cost_query);
-    const returnVal = await detectSpike(rows);
-    if (returnVal) {
+    const spike = await detectSpike(rows);
+    if (spike >= process.env.TOTAL_SPIKE) {
       if (
         process.env.NOTIFICATION_CHANNEL.toLowerCase() === "Slack".toLowerCase()
       ) {
         console.log("Spike: Slack Alert");
         const { sendSlackAlert } = require("./utils/alert");
-        await sendSlackAlert(rows, returnVal);
+        await sendSlackAlert(rows, spike);
       } else {
         const { logSpike } = require("./utils/alert");
-        logSpike(rows, returnVal);
+        logSpike(rows, spike);
       }
     } else {
-      console.log("No Spike");
+      console.log(`No Alert. Spike: ₹${spike.toFixed(2)}`);
     }
     res.status(200).send("Successful");
   } catch (err) {
