@@ -1,31 +1,32 @@
-const sendSlackAlert = async (rows, spike) => {
-  const slackWebhookURL = process.env.SLACK_WEBHOOK_URL;
-  const billingURL = process.env.BILLING_URL;
+// const sendSlackAlert = async (rows, spike) => {
+//   const slackWebhookURL = process.env.SLACK_WEBHOOK_URL;
+//   const billingURL = process.env.BILLING_URL;
 
-  const SlackNotify = require("slack-notify");
-  const slack = SlackNotify(slackWebhookURL);
+//   const SlackNotify = require("slack-notify");
+//   const slack = SlackNotify(slackWebhookURL);
 
-  try {
-    await slack.alert({
-      text: `*Billing ID URL*: ${billingURL} \n *High Level Details:*`,
-      fields: {
-        "Previous Cost": `*${rows[1].day.value}*: ₹${rows[1].cost.toFixed(2)}`,
-        "New Cost": `*${rows[0].day.value}*: ₹${rows[0].cost.toFixed(2)}`,
-        Spike: `${spike.toFixed(2)}`,
-      },
-    });
-  } catch (err) {
-    return err;
-  }
-};
+//   try {
+//     await slack.alert({
+//       text: `*Billing ID URL*: ${billingURL} \n *High Level Details:*`,
+//       fields: {
+//         "Previous Cost": `*${rows[1].day.value}*: ₹${rows[1].cost.toFixed(2)}`,
+//         "New Cost": `*${rows[0].day.value}*: ₹${rows[0].cost.toFixed(2)}`,
+//         Spike: `${spike.toFixed(2)}`,
+//       },
+//     });
+//   } catch (err) {
+//     return err;
+//   }
+// };
 
-const logSpike = async (rows, spike) => {
+const logSpike = (rows, spike) => {
   const logObject = {
     [rows[1].day.value]: `₹${rows[1].cost.toFixed(2)}`,
     [rows[0].day.value]: `₹${rows[0].cost.toFixed(2)}`,
     spike: `₹${spike.toFixed(2)}`,
   };
-  console.log(JSON.stringify(logObject));
+  console.log(logObject);
+  console.JSON(JSON.stringify(logObject));
 };
 
 // const sendEmailAlert = async (rows, spike) => {
@@ -84,4 +85,4 @@ const logSpike = async (rows, spike) => {
 //     return err;
 //   }
 // };
-module.exports = { sendSlackAlert, logSpike };
+module.exports = { logSpike };

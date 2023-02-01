@@ -3,6 +3,7 @@ const express = require("express");
 require("dotenv").config();
 const { createBQJob } = require("./utils/BQJobs");
 const { detectSpike } = require("./utils/spike");
+const { logSpike } = require("./utils/alert");
 const { total_cost_query } = require("./utils/queries");
 
 //Server Config
@@ -14,18 +15,14 @@ app.use(express.json());
 app.get("/", async (req, res) => {
   try {
     const rows = await createBQJob(total_cost_query);
-    const spike = await detectSpike(rows);
-    if (spike >= process.env.TOTAL_SPIKE) {
-      if (
-        process.env.NOTIFICATION_CHANNEL.toLowerCase() === "Slack".toLowerCase()
-      ) {
-        console.log("Spike: Slack Alert");
-        const { sendSlackAlert } = require("./utils/alert");
-        await sendSlackAlert(rows, spike);
-      } else {
-        const { logSpike } = require("./utils/alert");
-        logSpike(rows, spike);
-      }
+    const vars = await detectSpike(rows);
+    const spike = vars[0];
+    const lastDayCost = vars[1];
+    if (
+      spike >= process.env.TOTAL_SPIKE ||
+      lastDayCost > process.env.DAILY_COST
+    ) {
+      logSpike(rows, spike);
     } else {
       console.log(`No Alert. Spike: ₹${spike.toFixed(2)}`);
     }
