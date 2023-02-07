@@ -25,8 +25,7 @@ const logSpike = (rows, spike) => {
     [rows[0].day.value]: `₹${rows[0].cost.toFixed(2)}`,
     spike: `₹${spike.toFixed(2)}`,
   };
-  console.log(logObject);
-  console.JSON(JSON.stringify(logObject));
+  console.log(JSON.stringify(logObject));
 };
 
 // const sendEmailAlert = async (rows, spike) => {
